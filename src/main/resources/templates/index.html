@@ -11,7 +11,7 @@
 <body>
 <h1>Cadastrar Novo Carro</h1>
 
-<form action="#" th:action="@{/carros}" th:object="${carDTO}" method="post">
+<form action="#" th:action="@{/cars}" th:object="${carDTO}" method="post">
   <div>
     <label for="name">Nome:</label>
     <input type="text" id="name" th:field="*{name}">
