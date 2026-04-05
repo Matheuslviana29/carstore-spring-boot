@@ -23,8 +23,8 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public void save(CarDTO carDTO) {
-
-        if (carDTO.getId() == null) {
+        // Valida null e vazio, pois coloquei um input hidden no index.html em form.
+        if (carDTO.getId() == null || carDTO.getId().isEmpty()) {
 
             carDTO.setId(UUID.randomUUID().toString());
         }
@@ -43,4 +43,15 @@ public class CarServiceImpl implements CarService{
         this.cars.replaceAll(car -> car.getId().equals(id) ? carDTO : car);
 
     }
+
+    // Percorre a lista em memória procurando o Id correspondente, se não achar devolve null.
+
+    @Override
+    public CarDTO findById(String id) {
+        return this.cars.stream()
+                .filter(car -> car.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
+
 }

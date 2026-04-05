@@ -14,5 +14,7 @@ public interface CarService {
 
     void update(String id, CarDTO carDTO);
 
+    //Busca o carro pelo Id.
+    CarDTO findById(String id);
 
 }
